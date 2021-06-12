@@ -7,16 +7,22 @@ class EmployeeAttendance{
 		System.out.println("Welcome to wage computation problem");
 		int totalDays = 0;
 		int totalSalary = 0;
-		while(totalDays <=20) {
+		int totalHours = 0;
+		while(totalDays <=20 && totalHours<=100  ) {
 			double check = Math.floor(Math.random() * 10) % 3;
 			switch ((int) check) {
 				case IsPresent:
+
 					int NumOfHours = 8;
-					System.out.println("Employee is present");
+					if(totalDays+1>100 || totalHours+NumOfHours>100){
+						break;
+					}
 					int empWage = WagePerHour * NumOfHours;
+					System.out.println("Employee is present");
 					System.out.println("The wage of the employee is:" + empWage);
 					totalDays++;
 					totalSalary+=empWage;
+					totalHours+=NumOfHours;
 					break;
 
 				case IsPartTime:
@@ -26,15 +32,20 @@ class EmployeeAttendance{
 					System.out.println("The wage of the employee is:" + empWage);
 					totalDays++;
 					totalSalary+=empWage;
+					totalHours+=NumOfHours;
 					break;
 
 				case 0:
 					System.out.println("Employee is absent");
-					totalDays++;
 					break;
 			}
+			if(totalDays+1>100 || totalHours+4>100){
+				break;
+			}
 		}
-		System.out.println("The total wage of employee after 20 working days is: " +totalSalary);
+		System.out.println("Total hours worked are: " +totalHours);
+		System.out.println("Total days worked are: " +totalDays);
+		System.out.println("The total wage of employee after 20 working days or 100 hours is: " +totalSalary);
 	}
 }
 
