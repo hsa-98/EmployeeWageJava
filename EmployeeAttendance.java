@@ -4,16 +4,22 @@
  */
 class EmployeeAttendance {
 	//constants
-	static final int IsPresent = 1;
-	static final int IsPartTime = 2;
-	static final int WagePerHour = 20;
-	int totalDays = 0, totalSalary = 0, totalHours = 0; //variables
+	static final int IS_PRESENT = 1;
+	static final int IS_PART_TIME = 2;
 
-	/*
+	int totalDays = 0, totalSalary = 0, totalHours = 0, wagePerHour = 0;; //variables
+	String companyName;
+	EmployeeAttendance(String name, int WagePerHour){
+		this.companyName=name;
+		this.wagePerHour=WagePerHour;
+
+	}
+
+	/**
 	this method calculates the employee wage
 	 */
-	public static int dailyWageCalc(int hours) {
-		int wage = hours * WagePerHour;
+	public  int dailyWageCalc(int hours) {
+		int wage = hours * wagePerHour;
 		return wage;
 	}
 
@@ -27,8 +33,6 @@ class EmployeeAttendance {
 			return;
 		}
 		int empWage = dailyWageCalc(NumOfHours);
-		System.out.println("Employee is present");
-		System.out.println("The wage of the employee is:" + empWage);
 		increment(empWage, NumOfHours);
 
 		return;
@@ -38,10 +42,8 @@ class EmployeeAttendance {
 	this method is called if employee is part time present
 	 */
 	public void ifParttime() {
-		System.out.println("Employee is present part time");
 		int NumOfHours = 4;
 		int empWage = dailyWageCalc(NumOfHours);
-		System.out.println("The wage of the employee is:" + empWage);
 		increment(empWage, NumOfHours);
 		return;
 	}
