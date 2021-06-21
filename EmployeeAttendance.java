@@ -6,12 +6,15 @@ class EmployeeAttendance {
 	//constants
 	static final int IS_PRESENT = 1;
 	static final int IS_PART_TIME = 2;
-
-	int totalDays = 0, totalSalary = 0, totalHours = 0, wagePerHour = 0;; //variables
+	int [] dailyWage ;
+	int totalDays = 0, totalSalary = 0, totalHours = 0, wagePerHour = 0,totalHoursAllowed = 0,totalDaysAllowed=0 ; //variables
 	String companyName;
-	EmployeeAttendance(String name, int WagePerHour){
+	EmployeeAttendance(String name, int WagePerHour,int totalHoursAllowed, int totalDaysAllowed){
 		this.companyName=name;
 		this.wagePerHour=WagePerHour;
+		this.totalHoursAllowed = totalHoursAllowed;
+		this.totalDaysAllowed = totalDaysAllowed;
+		this.dailyWage = new int[totalDaysAllowed];
 
 	}
 
@@ -29,9 +32,6 @@ class EmployeeAttendance {
 	public void ifPresent() {
 
 		int NumOfHours = 8;
-		if (totalDays + 1 > 100 || totalHours + NumOfHours > 100) {
-			return;
-		}
 		int empWage = dailyWageCalc(NumOfHours);
 		increment(empWage, NumOfHours);
 
@@ -51,6 +51,7 @@ class EmployeeAttendance {
 	this method increments the necessary values
 	 */
 	public void increment(int empWage, int NumOfHours) {
+		dailyWage[totalDays] = empWage;
 		totalDays++;
 		totalSalary += empWage;
 		totalHours += NumOfHours;
