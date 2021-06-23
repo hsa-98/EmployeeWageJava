@@ -6,7 +6,7 @@ class EmployeeAttendance {
 	//constants
 	static final int IS_PRESENT = 1;
 	static final int IS_PART_TIME = 2;
-	int [] dailyWage ;
+	int [] dailyWage ;  //This array stores the daily wage of the employees.
 	int totalDays = 0, totalSalary = 0, totalHours = 0, wagePerHour = 0,totalHoursAllowed = 0,totalDaysAllowed=0 ; //variables
 	String companyName;
 	EmployeeAttendance(String name, int WagePerHour,int totalHoursAllowed, int totalDaysAllowed){
