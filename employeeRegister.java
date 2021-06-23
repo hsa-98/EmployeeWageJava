@@ -8,17 +8,18 @@ import java.util.Scanner;
  */
 public class employeeRegister {
 
-    HashMap<String,EmployeeAttendance>hashMap = new HashMap<String,EmployeeAttendance>();
+    //This Hashmap stores company name as key and,An object of class employee attendance as key.
+    HashMap<String,EmployeeAttendance>hashMap = new HashMap<String,EmployeeAttendance>();   .
     static Scanner sc = new Scanner(System.in);
     /**
      * employee: The method creates and object and has logic,
      * to compute the monthly salary of employee based on attendance
-     */
+     **/
     public void employee(String name, int totalHours, int wage, int totalDays) {
 
-        EmployeeAttendance employee = new EmployeeAttendance(name, wage,totalHours,totalDays);
-        hashMap.put(name,employee);
-
+        EmployeeAttendance employee = new EmployeeAttendance(name, wage,totalHours,totalDays);  
+        hashMap.put(name,employee); //put the name of company as key and object employee as value.
+        //runs while total days doesnt exceed te ttal allowed days.
         while (employee.totalDays <= totalDays || employee.totalHours <= totalHours) {
 
             double check = Math.floor(Math.random() * 10) % 3;
@@ -85,6 +86,7 @@ public class employeeRegister {
                 case 3:
                     System.out.println("Enter the name of the company");
                     String name1 = sc.next();
+                    //The if statement checks if the key exists in the hashmap
                     if (employeeRegister.hashMap.containsKey(name1)) {
                         EmployeeAttendance obj1 = employeeRegister.hashMap.get(name1);
                         int totalWage1 = obj1.totalSalary;
